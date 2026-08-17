@@ -11,8 +11,18 @@ type Todo = {
   createdAt: Date,
 }
 
+type addTodo = {
+  title: string,
+  description: string,
+  isCompleted: boolean,
+  priority: string,
+  category: string,
+} | null;
+
 function App() {
   const [todos, setTodos] = useState<Todo[]>([]);
+  const [newTodo, setNewTodo] = useState<addTodo>(null)
+  const [openModel, setOpenModel] = useState<boolean>(false);
  // const [loading, setLoading] = useState<boolean>(false);
   useEffect(()=>{
     const fetchedTodos = async () => {
@@ -43,7 +53,14 @@ function App() {
   };
    return (
    <div style={{background: 'white'}}>
-    <Navbar />
+    <div style={{display: "flex", alignItems: "center", justifyContent: "space-between", marginLeft: "10px"}}>
+            <input type="checkbox" />
+            <div style={{display: "flex", alignItems: "center", gap: "4px", marginRight: "20px"}}>
+            <img width="35" height="35" src="https://img.icons8.com/scribby/50/todo-list.png" alt="logo" />
+            <h1 style={{color: 'red'}}>my-todos</h1>
+            <button onClick={() => setOpenModel(true)}>+</button>
+            </div>
+        </div>
     <div style={{border: "1px solid black", width: "100%"}}></div>
     {!todos && <p>loading.....</p>}
     <div style={{display: 'flex', flexDirection: 'column', gap: '10px', marginTop: '10px'}}>

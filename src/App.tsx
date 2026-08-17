@@ -1,5 +1,5 @@
 import './App.css'
-import Navbar from './components/Navbar'
+import AddTodoModel from './components/AddTodoModel';
 import { useState, useEffect } from 'react';
 type Todo = {
   id: string,
@@ -17,11 +17,19 @@ type addTodo = {
   isCompleted: boolean,
   priority: string,
   category: string,
-} | null;
+};
+
+const defaultAddTodo: addTodo = {
+  title: '',
+  description: '',
+  isCompleted: false,
+  priority: 'low',
+  category: ''
+}
 
 function App() {
   const [todos, setTodos] = useState<Todo[]>([]);
-  const [newTodo, setNewTodo] = useState<addTodo>(null)
+  const [newTodo, setNewTodo] = useState<addTodo>(defaultAddTodo);
   const [openModel, setOpenModel] = useState<boolean>(false);
  // const [loading, setLoading] = useState<boolean>(false);
   useEffect(()=>{
@@ -51,6 +59,23 @@ function App() {
       console.error('Failed to delete todo:', error);
     }
   };
+
+  const handleAddTodo = async () => {
+    try {
+      const response = await fetch(
+        `https://6a812a5e400f94b23c6f47e7.mockapi.io/api/v1/todos/`,
+        {
+          method: 'POST',
+        }
+      );
+      const data = await response.json();
+      console.log(data);
+      setNewTodo(defaultAddTodo);
+      setOpenModel(false);
+    } catch (error) {
+      console.error('Failed to delete todo:', error);
+    }
+  }
    return (
    <div style={{background: 'white'}}>
     <div style={{display: "flex", alignItems: "center", justifyContent: "space-between", marginLeft: "10px"}}>
@@ -60,8 +85,11 @@ function App() {
             <h1 style={{color: 'red'}}>my-todos</h1>
             <button onClick={() => setOpenModel(true)}>+</button>
             </div>
-        </div>
+    </div>
     <div style={{border: "1px solid black", width: "100%"}}></div>
+    {openModel && (
+            <AddTodoModel todo={newTodo} setTodo={setNewTodo} onSave={handleAddTodo} onClose={() => setOpenModel(false)} />
+      )}
     {!todos && <p>loading.....</p>}
     <div style={{display: 'flex', flexDirection: 'column', gap: '10px', marginTop: '10px'}}>
       {todos.map((todo) => (

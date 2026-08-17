@@ -3,5 +3,11 @@
   "references": [
     { "path": "./tsconfig.app.json" },
     { "path": "./tsconfig.node.json" }
-  ]
+  ],
+  "compilerOptions": {
+    "baseUrl": ".", /* Tells TS that the base path is your root project folder */
+    "paths": {
+      "@/*": ["src/*"] /* Optional: If you use the '@' alias */
+    }
+  }
 }

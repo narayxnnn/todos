@@ -1,23 +1,18 @@
-type Todo = {
-    title: string,
-    description: string,
-    isCompleted: boolean,
-    priority: string,
-    category: string,
-  };
+import type {Todo} from '../api/todos'
 
 type Props = {
     todo: Todo;
-    setTodo: React.Dispatch<React.SetStateAction<Todo>>;
+    setTodo: React.Dispatch<React.SetStateAction<Todo | null>>;
     onSave: () => void;
     onClose: () => void;
 }
 
-const AddTodoModel = ({todo, setTodo, onSave, onClose}: Props) => {
-    const handleTodo = (field: string, value: string | boolean) => {
-            setTodo(prevTodo => ({...prevTodo, [field]: value}))
+const UpdateTodoModel = ({ todo, setTodo, onSave, onClose }: Props) => {
+    const handleTodo = (field: keyof Todo, value: string | boolean) => {
+        setTodo(prevTodo => prevTodo ? { ...prevTodo, [field]: value } : prevTodo)
     }
-    return(
+
+    return (
         <div className="modal-overlay">
             <div className="modal-content">
                 <div className="modal-form">
@@ -45,4 +40,4 @@ const AddTodoModel = ({todo, setTodo, onSave, onClose}: Props) => {
     );
 }
 
-export default AddTodoModel;
+export default UpdateTodoModel;

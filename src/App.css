@@ -1,0 +1,123 @@
+.app {
+    background: white;
+  }
+  
+  .app-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-left: 10px;
+  }
+  
+  .app-title {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin-right: 20px;
+  }
+  
+  .app-title h1 {
+    color: red;
+  }
+  
+  .app-divider {
+    border: 1px solid black;
+    width: 100%;
+  }
+  
+  .app-error {
+    color: red;
+    padding: 10px;
+  }
+  
+  .app-loading {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .todo-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+  }
+  
+  .todo-row {
+    border: 1px solid black;
+    border-radius: 4px;
+    padding-inline: 15px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .icon-button {
+    color: red;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+  }
+  
+  .delete-button {
+    background: red;
+    border: none;
+    border-radius: 4px;
+    padding: 10px;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .modal-content {
+    background: white;
+    margin: 30px;
+    width: 100%;
+    max-width: 500px;
+    height: 70%;
+    border-radius: 4px;
+  }
+  
+  .modal-form {
+    display: flex;
+    flex-direction: column;
+    padding: 40px 40px 0;
+  }
+  
+  .modal-label-spaced {
+    display: flex;
+    margin-top: 30px;
+  }
+  
+  .modal-input {
+    border: 0.2px solid red;
+    padding: 6px;
+    border-radius: 4px;
+  }
+  
+  .modal-actions {
+    display: flex;
+    gap: 30px;
+    justify-content: end;
+    align-items: end;
+    padding: 40px;
+  }
+  
+  .button-primary {
+    background: red;
+    border: none;
+    border-radius: 4px;
+    padding: 10px;
+    color: white;
+  }

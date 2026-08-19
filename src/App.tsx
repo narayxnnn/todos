@@ -37,8 +37,6 @@ function App() {
     }
   }, []);
 
-  // Runs once on mount only — do NOT add `todos` to this array,
-  // or every setTodos() call below will trigger another fetch.
   useEffect(() => {
     loadTodos();
   }, [loadTodos]);
@@ -93,8 +91,8 @@ function App() {
         <div className="app-title">
           <img width="35" height="35" src="https://img.icons8.com/scribby/50/todo-list.png" alt="logo" />
           <h1>my-todos</h1>
-          <button onClick={() => setOpenModel(true)}>+</button>
         </div>
+        <button style={{color: "red", background: "transparent", borderRadius: "100%", cursor: "pointer", width: "35px", height: "35px", fontSize: "30px", display: "flex", justifyContent: "center", alignItems: "center", borderColor: "red", marginRight: "20px"}} onClick={() => setOpenModel(true)}>+</button>
       </div>
       <div className="app-divider" />
 
